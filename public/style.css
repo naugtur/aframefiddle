@@ -1,0 +1,11 @@
+* { box-sizing: border-box; }
+body {
+  background: #eff;
+  font-size: 15pt;
+  padding: 1em;
+}
+
+a {
+  padding: 1em;
+  background: #ddd;
+}
