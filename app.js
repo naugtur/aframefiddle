@@ -15,19 +15,26 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.redirect('/edit/' + mnGen.word(2))
+  res.send(template.page(`
+<a href="/new">START!</a><br>
+<a href="/all">lista</a>
+<a href="https://glitch.com/edit/#!/remix/takivr">kod</a>
+    `))
+})
+app.get('/new', (req, res) => {
+  res.redirect('/vr/' + mnGen.word(2))
 })
 app.get('/all', (req, res) => {
-  const links = storage.keys().map(k => `<a href="/view/${k}">${k}</a>`)
+  const links = storage.keys().map(k => `<a href="/vr/${k}">${k}</a>`).join('')
   res.send(template.page(links))
 })
 
-app.get(['/edit/:id','/view/:id'], (req, res) => {
+app.get(['/vr/:id','/view/:id'], (req, res) => {
   const content = storage.get(req.params.id) || storage.save(req.params.id, template.content())
   console.log(`load ${req.params.id}`)
   res.send(template.vr(content))
 })
-app.post('/edit/:id', bodyMiddleware, (req, res) => {
+app.post('/vr/:id', bodyMiddleware, (req, res) => {
   console.log(`save ${req.params.id}`)
 
   storage.save(req.params.id, req.body)

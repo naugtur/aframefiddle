@@ -23,6 +23,7 @@ ${content}
 `,
   content: () => `<a-scene inspector="url:/public/aframe-inspector.min.js">
   <a-assets></a-assets>
+  <a-entity position="0 2 -3" text="align: center; width: 6; value: Taki VR"></a-entity>
   <a-sky color="#ECECEC"></a-sky>
   <a-box position="-1 0.5 -3" color="#4CC3D9"></a-box>
   <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
